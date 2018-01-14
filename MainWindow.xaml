@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Frame Grid.Column="0" Grid.ColumnSpan="2" x:Name="Frame_Loader"></Frame>
+        <Frame Grid.Column="1" x:Name="Frame_QuestOnePage"></Frame>
+        <StackPanel Grid.Column="0">
+            <Button x:Name="BTN_q1" Content="#1" VerticalAlignment="Top" Margin="5 10 5 0" FontSize="18" Click="BTN_q1_Click"></Button>
+            <Button Content="#2" FontSize="18" Margin="5 10 5 0"></Button>
+        </StackPanel>
     </Grid>
 </Window>

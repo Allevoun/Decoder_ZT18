@@ -16,21 +16,15 @@ using System.Windows.Shapes;
 namespace Decoder_ZT18
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Quest_one_page.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Quest_one_page : Page
     {
-        public MainWindow()
+        public Quest_one_page()
         {
             InitializeComponent();
-            Loader_page LP = new Loader_page();
-            Frame_Loader.Content = LP;
         }
 
-        private void BTN_q1_Click(object sender, RoutedEventArgs e)
-        {
-            Quest_one_page QOP = new Quest_one_page();
-            Frame_QuestOnePage.Content = QOP;
-        }
+        
     }
 }
