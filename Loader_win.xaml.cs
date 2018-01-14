@@ -55,7 +55,7 @@ namespace Decoder_ZT18
         double[] C2;
         double[] D2;
 
-        
+
 
         DispatcherTimer timer = new DispatcherTimer();
 
@@ -72,8 +72,7 @@ namespace Decoder_ZT18
                     Line_2.X1 = Line_2.X1 + 1;
                     Line_2.X2 = Line_2.X2 - 1;
 
-                    RLine_Blur.Radius = RLine_Blur.Radius - 0.05;
-                    BLine_Blur.Radius = BLine_Blur.Radius - 0.05;
+                    BlurEffect(0.05, "minus");
                     break;
                 case 1:
                     Line_1.X1 = Line_1.X1 + 1;
@@ -81,8 +80,7 @@ namespace Decoder_ZT18
 
                     Line_2.Y1 = Line_2.Y1 - 1;
                     Line_2.Y2 = Line_2.Y2 + 1;
-                    RLine_Blur.Radius = RLine_Blur.Radius - 0.05;
-                    BLine_Blur.Radius = BLine_Blur.Radius - 0.05;
+                    BlurEffect(0.05, "minus");
                     break;
                 case 2:
                     Line_1.Y1 = Line_1.Y1 - 1;
@@ -90,8 +88,8 @@ namespace Decoder_ZT18
 
                     Line_2.X1 = Line_2.X1 - 1;
                     Line_2.X2 = Line_2.X2 + 1;
-                    RLine_Blur.Radius = RLine_Blur.Radius + 0.05;
-                    BLine_Blur.Radius = BLine_Blur.Radius + 0.05;
+
+                    BlurEffect(0.05, "plus");
                     break;
                 case 3:
                     Line_1.X1 = Line_1.X1 - 1;
@@ -99,8 +97,8 @@ namespace Decoder_ZT18
 
                     Line_2.Y1 = Line_2.Y1 + 1;
                     Line_2.Y2 = Line_2.Y2 - 1;
-                    RLine_Blur.Radius = RLine_Blur.Radius + 0.05;
-                    BLine_Blur.Radius = BLine_Blur.Radius + 0.05;
+
+                    BlurEffect(0.05, "plus");
                     break;
             }
 
@@ -126,10 +124,22 @@ namespace Decoder_ZT18
             Line Line_3 = new Line();
             Line Line_4 = new Line();
 
-            Line_3.X1=
-        
+
         }
-        
+        void BlurEffect(double n, string x)
+        {
+            if (x == "plus")
+            {
+                RLine_Blur.Radius = RLine_Blur.Radius + n;
+                BLine_Blur.Radius = BLine_Blur.Radius + n;
+            }
+            else if (x == "minus")
+            {
+                RLine_Blur.Radius = RLine_Blur.Radius - n;
+                BLine_Blur.Radius = BLine_Blur.Radius - n;
+            }
+        }
+
     }
 }
 
