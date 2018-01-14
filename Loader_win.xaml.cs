@@ -10,24 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Decoder_ZT18
 {
     /// <summary>
-    /// Логика взаимодействия для Loader_page.xaml
+    /// Логика взаимодействия для Loader_win.xaml
     /// </summary>
-    public partial class Loader_page : Page
+    public partial class Loader_win : Window
     {
-        public Loader_page()
+        public Loader_win()
         {
             InitializeComponent();
 
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += Timer_Tick;
             timer.Start();
+            //Line_1.X1 = this.Height / 3;
+            //Line_1.Y1 = this.Width / 3;
+            //Line_2.X1 = this.Height / 3;
+            //Line_2.Y1 = this.Width * 2 / 3;
 
             A = new double[] { Line_1.X1, Line_1.Y1 };
             A2 = A;
@@ -52,13 +55,13 @@ namespace Decoder_ZT18
         double[] C2;
         double[] D2;
 
+        
+
         DispatcherTimer timer = new DispatcherTimer();
 
 
         void Timer_Tick(object sender, EventArgs e)
         {
-
-
             switch (Etap)
             {
 
@@ -68,6 +71,9 @@ namespace Decoder_ZT18
 
                     Line_2.X1 = Line_2.X1 + 1;
                     Line_2.X2 = Line_2.X2 - 1;
+
+                    RLine_Blur.Radius = RLine_Blur.Radius - 0.05;
+                    BLine_Blur.Radius = BLine_Blur.Radius - 0.05;
                     break;
                 case 1:
                     Line_1.X1 = Line_1.X1 + 1;
@@ -75,6 +81,8 @@ namespace Decoder_ZT18
 
                     Line_2.Y1 = Line_2.Y1 - 1;
                     Line_2.Y2 = Line_2.Y2 + 1;
+                    RLine_Blur.Radius = RLine_Blur.Radius - 0.05;
+                    BLine_Blur.Radius = BLine_Blur.Radius - 0.05;
                     break;
                 case 2:
                     Line_1.Y1 = Line_1.Y1 - 1;
@@ -82,6 +90,8 @@ namespace Decoder_ZT18
 
                     Line_2.X1 = Line_2.X1 - 1;
                     Line_2.X2 = Line_2.X2 + 1;
+                    RLine_Blur.Radius = RLine_Blur.Radius + 0.05;
+                    BLine_Blur.Radius = BLine_Blur.Radius + 0.05;
                     break;
                 case 3:
                     Line_1.X1 = Line_1.X1 - 1;
@@ -89,6 +99,8 @@ namespace Decoder_ZT18
 
                     Line_2.Y1 = Line_2.Y1 + 1;
                     Line_2.Y2 = Line_2.Y2 - 1;
+                    RLine_Blur.Radius = RLine_Blur.Radius + 0.05;
+                    BLine_Blur.Radius = BLine_Blur.Radius + 0.05;
                     break;
             }
 
@@ -106,7 +118,18 @@ namespace Decoder_ZT18
                 Etap = 1;
             if (A2[0] == A[0] && A2[1] == A[1])
                 Etap = 0;
-            
+
         }
+
+        void NewLineCreate()
+        {
+            Line Line_3 = new Line();
+            Line Line_4 = new Line();
+
+            Line_3.X1=
+        
+        }
+        
     }
 }
+

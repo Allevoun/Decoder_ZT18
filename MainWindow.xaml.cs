@@ -23,8 +23,9 @@ namespace Decoder_ZT18
         public MainWindow()
         {
             InitializeComponent();
-            Loader_page LP = new Loader_page();
-            Frame_Loader.Content = LP;
+
+            Loader_win LW = new Loader_win();
+            LW.ShowDialog();
         }
 
         private void BTN_q1_Click(object sender, RoutedEventArgs e)

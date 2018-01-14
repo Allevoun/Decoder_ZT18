@@ -1,0 +1,22 @@
+﻿<Window x:Class="Decoder_ZT18.Loader_win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Decoder_ZT18"
+        mc:Ignorable="d"
+        Title="Loader_win" Height="300" Width="300" ResizeMode="NoResize">
+    <Grid RenderTransformOrigin="0.589,0.24">
+        <Line Name="Line_1"  X1="100" Y1="100" X2="200" Y2="200" Stroke="Red" >
+            <Line.Effect >
+                <BlurEffect x:Name="RLine_Blur" Radius="10" />
+            </Line.Effect>
+        </Line>
+        <Line Name="Line_2"  X1="100" Y1="200" X2="200" Y2="100" Stroke="Blue">
+            <Line.Effect>
+                <BlurEffect x:Name="BLine_Blur" Radius="10"/>
+            </Line.Effect>
+        </Line>
+        
+    </Grid>
+</Window>
