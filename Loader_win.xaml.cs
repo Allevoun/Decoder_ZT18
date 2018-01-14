@@ -24,7 +24,7 @@ namespace Decoder_ZT18
         {
             InitializeComponent();
 
-            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Interval = TimeSpan.FromMilliseconds(speed * 5);
             timer.Tick += Timer_Tick;
             timer.Start();
             //Line_1.X1 = this.Height / 3;
@@ -44,6 +44,7 @@ namespace Decoder_ZT18
         }
 
         int Etap = 0;
+        double speed = 1;
         bool Flag = false;
         // Settigs ???
         double[] A;
@@ -59,14 +60,11 @@ namespace Decoder_ZT18
         Line Line_3;
         Line Line_4;
 
-
-
-
         DispatcherTimer timer = new DispatcherTimer();
-
 
         void Timer_Tick(object sender, EventArgs e)
         {
+
             OldLinesMove();
             NewLinesMove();
 
@@ -84,10 +82,14 @@ namespace Decoder_ZT18
                 Etap = 1;
             if (A2[0] == A[0] && A2[1] == A[1])
             {
-                NewLineCreate(A2, B2, C2, D2);
+                NewLineCreate(C2, D2, A2, B2);
                 Flag = !Flag;
                 Etap = 0;
             }
+
+
+            //timer.Interval = TimeSpan.FromMilliseconds(speed);
+
 
         }
 
@@ -112,21 +114,26 @@ namespace Decoder_ZT18
             Line_4.Stroke = Brushes.LightBlue;
         }
 
+        void SpeedChange()
+        {
+
+        }
+
         // оптимизированный метод для поворота
         void LinesMove(Line myLine1, Line myLine2, int etap, int Moving) // moving - +1 or -1 (против и по соответсвенно)
         {
 
             if (etap < 2)
             {
-                myLine1.X1 = myLine1.X1 + Moving * etap % 2;
-                myLine1.X2 = myLine1.X2 - Moving * etap % 2;
-                myLine1.Y1 = myLine1.Y1 + Moving * (etap + 1) % 2;
+                myLine1.X1 = myLine1.X1 + etap % 2; //changed
+                myLine1.X2 = myLine1.X2 - etap % 2;
+                myLine1.Y1 = myLine1.Y1 + Moving * (etap + 1) % 2; //need
                 myLine1.Y2 = myLine1.Y2 - Moving * (etap + 1) % 2;
 
                 if (etap == 0)
                 {
-                    myLine2.X1 = myLine2.X1 + Moving * (etap + 1) % 2;
-                    myLine2.X2 = myLine2.X2 - Moving * (etap + 1) % 2;
+                    myLine2.X1 = myLine2.X1 + (etap + 1) % 2; //changed
+                    myLine2.X2 = myLine2.X2 - (etap + 1) % 2;
                     myLine2.Y1 = myLine2.Y1 + Moving * etap % 2;
                     myLine2.Y2 = myLine2.Y2 - Moving * etap % 2;
                 }
@@ -134,33 +141,33 @@ namespace Decoder_ZT18
                 {
                     myLine2.X1 = myLine2.X1 - Moving * (etap + 1) % 2;
                     myLine2.X2 = myLine2.X2 + Moving * (etap + 1) % 2;
-                    myLine2.Y1 = myLine2.Y1 - Moving * etap % 2;
+                    myLine2.Y1 = myLine2.Y1 - Moving * etap % 2; //changed (mooving here is need)
                     myLine2.Y2 = myLine2.Y2 + Moving * etap % 2;
                 }
             }
             else
             {
-                myLine1.X1 = myLine1.X1 - Moving * etap % 2;
-                myLine1.X2 = myLine1.X2 + Moving * etap % 2;
-                myLine1.Y1 = myLine1.Y1 - Moving * (etap + 1) % 2;
+                myLine1.X1 = myLine1.X1 - etap % 2; //chenged
+                myLine1.X2 = myLine1.X2 + etap % 2;
+                myLine1.Y1 = myLine1.Y1 - Moving * (etap + 1) % 2; //nedd
                 myLine1.Y2 = myLine1.Y2 + Moving * (etap + 1) % 2;
 
                 if (etap == 3)
                 {
                     myLine2.X1 = myLine2.X1 + Moving * (etap + 1) % 2;
                     myLine2.X2 = myLine2.X2 - Moving * (etap + 1) % 2;
-                    myLine2.Y1 = myLine2.Y1 + Moving * etap % 2;
+                    myLine2.Y1 = myLine2.Y1 + Moving * etap % 2; //changed (mooving here is need)
                     myLine2.Y2 = myLine2.Y2 - Moving * etap % 2;
                 }
                 else
                 {
-                    myLine2.X1 = myLine2.X1 - Moving * (etap + 1) % 2;
-                    myLine2.X2 = myLine2.X2 + Moving * (etap + 1) % 2;
+                    myLine2.X1 = myLine2.X1 - (etap + 1) % 2; //changed
+                    myLine2.X2 = myLine2.X2 + (etap + 1) % 2;
                     myLine2.Y1 = myLine2.Y1 - Moving * etap % 2;
                     myLine2.Y2 = myLine2.Y2 + Moving * etap % 2;
                 }
             }
-            
+
         }
 
         void OldLinesMove()
@@ -189,10 +196,8 @@ namespace Decoder_ZT18
 
         void NewLinesMove()
         {
-            if(Flag == true)
+            if (Flag == true)
                 LinesMove(Line_3, Line_4, Etap, -1);
-            
-
         }
 
         void BlurEffect(double n, int x)

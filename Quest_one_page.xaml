@@ -21,5 +21,6 @@
         </Grid.ColumnDefinitions>
 
         <TextBox x:Name="TB_Code" Grid.Row="1" Grid.Column="1" Text="Write in me" Margin="10" TextAlignment="Center" ></TextBox>
+        <Button x:Name="BTN_decode" Grid.Row="2" Grid.Column="2" Margin="15 40" Click="BTN_decode_Click" >Decode</Button>
     </Grid>
 </Page>

@@ -25,6 +25,13 @@ namespace Decoder_ZT18
             InitializeComponent();
         }
 
-        
+        private void BTN_decode_Click(object sender, RoutedEventArgs e)
+        {
+            TB_Code.Text = "LOCKED";
+        }
+
+        private void Decode(string CODE)
+        {
+        }
     }
 }
