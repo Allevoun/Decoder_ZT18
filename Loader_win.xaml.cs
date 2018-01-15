@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -27,6 +28,9 @@ namespace Decoder_ZT18
             timer.Interval = TimeSpan.FromMilliseconds(speed * 5);
             timer.Tick += Timer_Tick;
             timer.Start();
+            timer1.Interval = TimeSpan.FromMinutes(0.2);
+            timer1.Tick += Timer1_Tick;
+            timer1.Start();
             //Line_1.X1 = this.Height / 3;
             //Line_1.Y1 = this.Width / 3;
             //Line_2.X1 = this.Height / 3;
@@ -57,10 +61,8 @@ namespace Decoder_ZT18
         double[] C2;
         double[] D2;
 
-        Line Line_3;
-        Line Line_4;
-
         DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer timer1 = new DispatcherTimer();
 
         void Timer_Tick(object sender, EventArgs e)
         {
@@ -82,24 +84,31 @@ namespace Decoder_ZT18
                 Etap = 1;
             if (A2[0] == A[0] && A2[1] == A[1])
             {
+                Flag = !Flag; // гениально чёрт подери
+                //регулирует движение и видимость линий 
                 NewLineCreate(C2, D2, A2, B2);
-                Flag = !Flag;
                 Etap = 0;
             }
-
-
-            //timer.Interval = TimeSpan.FromMilliseconds(speed);
-
-
+        }
+        void Timer1_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            timer1.Stop();
+            this.Close();
         }
 
-        void NewLineCreate(double[] L3A, double[] L3B, double[] L4A, double[] L4B)
+            void NewLineCreate(double[] L3A, double[] L3B, double[] L4A, double[] L4B)
         {
-            Line_3 = new Line();
-            Line_4 = new Line();
-
-            Grid_Loader.Children.Add(Line_3);
-            Grid_Loader.Children.Add(Line_4);
+            if (Flag == true)
+            {
+                Line_3.Visibility = Visibility.Visible;
+                Line_4.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Line_3.Visibility = Visibility.Hidden;
+                Line_4.Visibility = Visibility.Hidden;
+            }
 
             Line_3.X1 = L3A[0];
             Line_3.Y1 = L3A[1];
@@ -122,7 +131,6 @@ namespace Decoder_ZT18
         // оптимизированный метод для поворота
         void LinesMove(Line myLine1, Line myLine2, int etap, int Moving) // moving - +1 or -1 (против и по соответсвенно)
         {
-
             if (etap < 2)
             {
                 myLine1.X1 = myLine1.X1 + etap % 2; //changed
@@ -176,19 +184,19 @@ namespace Decoder_ZT18
             {
                 case 0:
                     LinesMove(Line_1, Line_2, Etap, 1);
-                    BlurEffect(0.05, -1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, -1);
                     break;
                 case 1:
                     LinesMove(Line_1, Line_2, Etap, 1);
-                    BlurEffect(0.05, -1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, -1);
                     break;
                 case 2:
                     LinesMove(Line_1, Line_2, Etap, 1);
-                    BlurEffect(0.05, 1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, 1);
                     break;
                 case 3:
                     LinesMove(Line_1, Line_2, Etap, 1);
-                    BlurEffect(0.05, 1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, 1);
                     break;
             }
         }
@@ -197,20 +205,27 @@ namespace Decoder_ZT18
         void NewLinesMove()
         {
             if (Flag == true)
+            {
                 LinesMove(Line_3, Line_4, Etap, -1);
+
+                if (Etap < 2)
+                    BlurEffect(Line3_Blur, Line4_Blur, 0.05, -1);
+                else
+                    BlurEffect(Line3_Blur, Line4_Blur, 0.05, 1);
+            }
         }
 
-        void BlurEffect(double n, int x)
+        void BlurEffect(BlurEffect BELine1, BlurEffect BELine2, double n, int x)
         {
             if (x == 1)
             {
-                RLine_Blur.Radius = RLine_Blur.Radius + n;
-                BLine_Blur.Radius = BLine_Blur.Radius + n;
+                BELine1.Radius = BELine1.Radius + n;
+                BELine2.Radius = BELine2.Radius + n;
             }
             else if (x == -1)
             {
-                RLine_Blur.Radius = RLine_Blur.Radius - n;
-                BLine_Blur.Radius = BLine_Blur.Radius - n;
+                BELine1.Radius = BELine1.Radius - n;
+                BELine2.Radius = BELine2.Radius - n;
             }
         }
 
