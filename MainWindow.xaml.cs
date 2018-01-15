@@ -33,5 +33,17 @@ namespace Decoder_ZT18
             Quest_one_page QOP = new Quest_one_page();
             Frame_QuestOnePage.Content = QOP;
         }
+
+        private void BTN_q2_Click(object sender, RoutedEventArgs e)
+        {
+            Settings ST = new Settings();
+
+            if (DateTime.Now >= Settings.Deadline)
+            {
+                MessageBox.Show("Respect");
+            }
+            else
+                MessageBox.Show("Not now");
+        }
     }
 }

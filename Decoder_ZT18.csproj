@@ -61,6 +61,7 @@
     <Compile Include="Quest_one_page.xaml.cs">
       <DependentUpon>Quest_one_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Page Include="Loader_win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
