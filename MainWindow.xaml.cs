@@ -36,8 +36,6 @@ namespace Decoder_ZT18
 
         private void BTN_q2_Click(object sender, RoutedEventArgs e)
         {
-            Settings ST = new Settings();
-
             if (DateTime.Now >= Settings.Deadline)
             {
                 MessageBox.Show("Respect");

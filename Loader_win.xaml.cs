@@ -25,6 +25,14 @@ namespace Decoder_ZT18
         {
             InitializeComponent();
 
+            //DateTime DeadLine = new DateTime();
+            //DeadLine = DateTime.Now;
+            //DeadLine.AddMinutes(2);
+
+            Settings.Deadline = DateTime.Now;
+            Settings.Deadline = Settings.Deadline.AddMinutes(2);
+                 
+
             timer.Interval = TimeSpan.FromMilliseconds(speed * 5);
             timer.Tick += Timer_Tick;
             timer.Start();
