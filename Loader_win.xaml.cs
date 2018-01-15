@@ -31,9 +31,9 @@ namespace Decoder_ZT18
 
             Settings.Deadline = DateTime.Now;
             Settings.Deadline = Settings.Deadline.AddMinutes(2);
-                 
 
-            timer.Interval = TimeSpan.FromMilliseconds(speed * 5);
+
+            timer.Interval = TimeSpan.FromMilliseconds(speed);
             timer.Tick += Timer_Tick;
             timer.Start();
             timer1.Interval = TimeSpan.FromMinutes(0.2);
@@ -105,7 +105,7 @@ namespace Decoder_ZT18
             this.Close();
         }
 
-            void NewLineCreate(double[] L3A, double[] L3B, double[] L4A, double[] L4B)
+        void NewLineCreate(double[] L3A, double[] L3B, double[] L4A, double[] L4B)
         {
             if (Flag == true)
             {
@@ -137,50 +137,50 @@ namespace Decoder_ZT18
         }
 
         // оптимизированный метод для поворота
-        void LinesMove(Line myLine1, Line myLine2, int etap, int Moving) // moving - +1 or -1 (против и по соответсвенно)
+        void LinesMove(Line myLine1, Line myLine2, int etap, int Moving, double Speed) // moving - +1 or -1 (против и по соответсвенно)
         {
             if (etap < 2)
             {
-                myLine1.X1 = myLine1.X1 + etap % 2; //changed
-                myLine1.X2 = myLine1.X2 - etap % 2;
-                myLine1.Y1 = myLine1.Y1 + Moving * (etap + 1) % 2; //need
-                myLine1.Y2 = myLine1.Y2 - Moving * (etap + 1) % 2;
+                myLine1.X1 = myLine1.X1 + Speed * (etap % 2); //changed
+                myLine1.X2 = myLine1.X2 - Speed * (etap % 2);
+                myLine1.Y1 = myLine1.Y1 + Moving * Speed * ((etap + 1) % 2); //need
+                myLine1.Y2 = myLine1.Y2 - Moving * Speed * ((etap + 1) % 2);
 
                 if (etap == 0)
                 {
-                    myLine2.X1 = myLine2.X1 + (etap + 1) % 2; //changed
-                    myLine2.X2 = myLine2.X2 - (etap + 1) % 2;
-                    myLine2.Y1 = myLine2.Y1 + Moving * etap % 2;
-                    myLine2.Y2 = myLine2.Y2 - Moving * etap % 2;
+                    myLine2.X1 = myLine2.X1 + Speed * ((etap + 1) % 2); //changed
+                    myLine2.X2 = myLine2.X2 - Speed * ((etap + 1) % 2);
+                    myLine2.Y1 = myLine2.Y1 + Moving * Speed * (etap % 2);
+                    myLine2.Y2 = myLine2.Y2 - Moving * Speed * (etap % 2);
                 }
                 else
                 {
-                    myLine2.X1 = myLine2.X1 - Moving * (etap + 1) % 2;
-                    myLine2.X2 = myLine2.X2 + Moving * (etap + 1) % 2;
-                    myLine2.Y1 = myLine2.Y1 - Moving * etap % 2; //changed (mooving here is need)
-                    myLine2.Y2 = myLine2.Y2 + Moving * etap % 2;
+                    myLine2.X1 = myLine2.X1 - Moving * Speed * ((etap + 1) % 2);
+                    myLine2.X2 = myLine2.X2 + Moving * Speed * ((etap + 1) % 2);
+                    myLine2.Y1 = myLine2.Y1 - Moving * Speed * (etap % 2); //changed (mooving here is need)
+                    myLine2.Y2 = myLine2.Y2 + Moving * Speed * (etap % 2);
                 }
             }
             else
             {
-                myLine1.X1 = myLine1.X1 - etap % 2; //chenged
-                myLine1.X2 = myLine1.X2 + etap % 2;
-                myLine1.Y1 = myLine1.Y1 - Moving * (etap + 1) % 2; //nedd
-                myLine1.Y2 = myLine1.Y2 + Moving * (etap + 1) % 2;
+                myLine1.X1 = myLine1.X1 - Speed * (etap % 2); //chenged
+                myLine1.X2 = myLine1.X2 + Speed * (etap % 2);
+                myLine1.Y1 = myLine1.Y1 - Moving * Speed * ((etap + 1) % 2); //nedd
+                myLine1.Y2 = myLine1.Y2 + Moving * Speed * ((etap + 1) % 2);
 
                 if (etap == 3)
                 {
-                    myLine2.X1 = myLine2.X1 + Moving * (etap + 1) % 2;
-                    myLine2.X2 = myLine2.X2 - Moving * (etap + 1) % 2;
-                    myLine2.Y1 = myLine2.Y1 + Moving * etap % 2; //changed (mooving here is need)
-                    myLine2.Y2 = myLine2.Y2 - Moving * etap % 2;
+                    myLine2.X1 = myLine2.X1 + Moving * Speed * ((etap + 1) % 2);
+                    myLine2.X2 = myLine2.X2 - Moving * Speed * ((etap + 1) % 2);
+                    myLine2.Y1 = myLine2.Y1 + Moving * Speed * (etap % 2); //changed (mooving here is need)
+                    myLine2.Y2 = myLine2.Y2 - Moving * Speed * (etap % 2);
                 }
                 else
                 {
-                    myLine2.X1 = myLine2.X1 - (etap + 1) % 2; //changed
-                    myLine2.X2 = myLine2.X2 + (etap + 1) % 2;
-                    myLine2.Y1 = myLine2.Y1 - Moving * etap % 2;
-                    myLine2.Y2 = myLine2.Y2 + Moving * etap % 2;
+                    myLine2.X1 = myLine2.X1 - Speed * ((etap + 1) % 2); //changed
+                    myLine2.X2 = myLine2.X2 + Speed * ((etap + 1) % 2);
+                    myLine2.Y1 = myLine2.Y1 - Moving * Speed * (etap % 2);
+                    myLine2.Y2 = myLine2.Y2 + Moving * Speed * (etap % 2);
                 }
             }
 
@@ -188,22 +188,21 @@ namespace Decoder_ZT18
 
         void OldLinesMove()
         {
+
+            LinesMove(Line_1, Line_2, Etap, 1, 4);
+
             switch (Etap)
             {
                 case 0:
-                    LinesMove(Line_1, Line_2, Etap, 1);
                     BlurEffect(Line1_Blur, Line2_Blur, 0.05, -1);
                     break;
                 case 1:
-                    LinesMove(Line_1, Line_2, Etap, 1);
                     BlurEffect(Line1_Blur, Line2_Blur, 0.05, -1);
                     break;
                 case 2:
-                    LinesMove(Line_1, Line_2, Etap, 1);
                     BlurEffect(Line1_Blur, Line2_Blur, 0.05, 1);
                     break;
                 case 3:
-                    LinesMove(Line_1, Line_2, Etap, 1);
                     BlurEffect(Line1_Blur, Line2_Blur, 0.05, 1);
                     break;
             }
@@ -214,7 +213,7 @@ namespace Decoder_ZT18
         {
             if (Flag == true)
             {
-                LinesMove(Line_3, Line_4, Etap, -1);
+                LinesMove(Line_3, Line_4, Etap, -1, 3); // по часовой стрелке, т.к. (-1)
 
                 if (Etap < 2)
                     BlurEffect(Line3_Blur, Line4_Blur, 0.05, -1);
