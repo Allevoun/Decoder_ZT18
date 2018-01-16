@@ -23,25 +23,28 @@ namespace Decoder_ZT18
         public MainWindow()
         {
             InitializeComponent();
-
-            Loader_win LW = new Loader_win();
-            LW.ShowDialog();
+            
         }
 
         private void BTN_q1_Click(object sender, RoutedEventArgs e)
         {
-            Quest_one_page QOP = new Quest_one_page();
-            Frame_QuestOnePage.Content = QOP;
+            //Quest_one_page QOP = new Quest_one_page();
+            //Frame_QuestOnePage.Content = QOP;
+            Loader_win LW = new Loader_win();
+            LW.ShowDialog();
         }
 
         private void BTN_q2_Click(object sender, RoutedEventArgs e)
         {
-            if (DateTime.Now >= Settings.Deadline)
-            {
-                MessageBox.Show("Respect");
-            }
-            else
-                MessageBox.Show("Not now");
+            // - - - - -- -  - - -- -  ВАЖНАЯ ВЕЩЬ 
+            //if (DateTime.Now >= Settings.Deadline)
+            //{
+            //    MessageBox.Show("Respect");
+            //}
+            //else
+            //    MessageBox.Show("Not now");
+            Loader_win_X2 LWx2 = new Loader_win_X2();
+            LWx2.Show();
         }
     }
 }

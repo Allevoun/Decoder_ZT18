@@ -36,9 +36,8 @@ namespace Decoder_ZT18
             timer.Interval = TimeSpan.FromMilliseconds(speed);
             timer.Tick += Timer_Tick;
             timer.Start();
-            timer1.Interval = TimeSpan.FromMinutes(0.2);
-            timer1.Tick += Timer1_Tick;
-            timer1.Start();
+
+            TimerOfClose(0.2);
             //Line_1.X1 = this.Height / 3;
             //Line_1.Y1 = this.Width / 3;
             //Line_2.X1 = this.Height / 3;
@@ -71,6 +70,13 @@ namespace Decoder_ZT18
 
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer timer1 = new DispatcherTimer();
+
+        void TimerOfClose(double time)
+        {
+            timer1.Interval = TimeSpan.FromMinutes(time);
+            timer1.Tick += Timer1_Tick;
+            timer1.Start();
+        }
 
         void Timer_Tick(object sender, EventArgs e)
         {
@@ -189,21 +195,21 @@ namespace Decoder_ZT18
         void OldLinesMove()
         {
 
-            LinesMove(Line_1, Line_2, Etap, 1, 4);
+            LinesMove(Line_1, Line_2, Etap, 1, speed);
 
             switch (Etap)
             {
                 case 0:
-                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, -1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, -int.Parse(speed.ToString()));
                     break;
                 case 1:
-                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, -1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, -int.Parse(speed.ToString()));
                     break;
                 case 2:
-                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, 1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, int.Parse(speed.ToString()));
                     break;
                 case 3:
-                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, 1);
+                    BlurEffect(Line1_Blur, Line2_Blur, 0.05, int.Parse(speed.ToString()));
                     break;
             }
         }
@@ -213,12 +219,12 @@ namespace Decoder_ZT18
         {
             if (Flag == true)
             {
-                LinesMove(Line_3, Line_4, Etap, -1, 3); // по часовой стрелке, т.к. (-1)
+                LinesMove(Line_3, Line_4, Etap, -1, speed); // по часовой стрелке, т.к. (-1)
 
                 if (Etap < 2)
-                    BlurEffect(Line3_Blur, Line4_Blur, 0.05, -1);
+                    BlurEffect(Line3_Blur, Line4_Blur, 0.05, -int.Parse(speed.ToString()));
                 else
-                    BlurEffect(Line3_Blur, Line4_Blur, 0.05, 1);
+                    BlurEffect(Line3_Blur, Line4_Blur, 0.05, int.Parse(speed.ToString()));
             }
         }
 

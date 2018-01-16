@@ -58,11 +58,18 @@
     <Compile Include="Loader_win.xaml.cs">
       <DependentUpon>Loader_win.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Loader_win_X2.xaml.cs">
+      <DependentUpon>Loader_win_X2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Quest_one_page.xaml.cs">
       <DependentUpon>Quest_one_page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Page Include="Loader_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loader_win_X2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="Decoder_ZT18.Loader_win_X2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Decoder_ZT18"
+        mc:Ignorable="d"
+        Title="Loader_win_X2" Height="300" Width="300">
+    <Grid x:Name="Grid1_loader">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="65"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Name="Grid_2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="Grid_2_Row_1"></ColumnDefinition>
+                <ColumnDefinition x:Name="Grid_2_Row_2"></ColumnDefinition>
+                <ColumnDefinition x:Name="Grid_2_Row_3"></ColumnDefinition>
+                <ColumnDefinition x:Name="Grid_2_Row_4"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="Grid_2_Column_1"></RowDefinition>
+                <RowDefinition x:Name="Grid_2_Column_2"></RowDefinition>
+                <RowDefinition x:Name="Grid_2_Column_3"></RowDefinition>
+                <RowDefinition x:Name="Grid_2_Column_4"></RowDefinition>
+
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <!--<Rectangle  Fill="LightPink" RadiusX="15" RadiusY="15" Margin="10"  ></Rectangle>-->
+        
+    </Grid>
+</Window>
