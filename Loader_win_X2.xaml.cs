@@ -23,9 +23,9 @@ namespace Decoder_ZT18
         public Loader_win_X2()
         {
             InitializeComponent();
-            CreateRectangle(Grid_2, 15);
+            CreateRectangle(Grid_2, 5);
 
-            timer.Interval = TimeSpan.FromSeconds(1.5);
+            timer.Interval = TimeSpan.FromSeconds(0.5);
             timer.Tick += Timer_Tick;
             timer.Start();
 
@@ -36,10 +36,12 @@ namespace Decoder_ZT18
 
         List<string> GridRNames = new List<string>();
         List<string> GridCNames = new List<string>();
-        List<Rectangle> RectanglesList = new List<Rectangle>();
 
-        DispatcherTimer timer = new DispatcherTimer();
-        DispatcherTimer timer1 = new DispatcherTimer();
+        List<Rectangle> RectanglesList = new List<Rectangle>();
+        List<Rectangle> GridList = new List<Rectangle>();
+
+        DispatcherTimer timer = new DispatcherTimer(); // за изменение цвета 
+        DispatcherTimer timer1 = new DispatcherTimer(); // за остановление проекта
 
         void TimerOfClose(double time)
         {
@@ -51,12 +53,11 @@ namespace Decoder_ZT18
         void Timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-            this.Close();
         }
 
         void Timer_Tick(object sender, EventArgs e)
         {
-            ElementsColorChange(Grid_2);
+            ElementsColorChange(Grid_2, 5);
         }
 
 
@@ -68,54 +69,129 @@ namespace Decoder_ZT18
                 for (int j = 0; j < GridName.ColumnDefinitions.Count; j++)
                 {
 
-                    if (i == j)
-                    {
-                        Rectangle RG = new Rectangle { Fill = Brushes.LightPink };
+                    //if (i == j)
+                    //{
+                    //    Rectangle RG = new Rectangle { Fill = Brushes.Gray };
 
-                        GridName.Children.Add(RG);
-                        Grid.SetColumn(RG, j);
-                        Grid.SetRow(RG, i);
+                    //    GridName.Children.Add(RG);
+                    //    Grid.SetColumn(RG, j);
+                    //    Grid.SetRow(RG, i);
 
-                        Thickness myThickness = new Thickness();
-                        myThickness.Left = Margin;
-                        myThickness.Right = Margin;
-                        myThickness.Top = Margin;
-                        myThickness.Bottom = Margin;
+                    //    Thickness myThickness = new Thickness();
+                    //    myThickness.Left = Margin;
+                    //    myThickness.Right = Margin;
+                    //    myThickness.Top = Margin;
+                    //    myThickness.Bottom = Margin;
 
-                        RG.Margin = myThickness;
+                    //    RG.Margin = myThickness;
 
-                        RectanglesList.Add(RG);
-                    }
-                    else
-                    {
-                        Rectangle RG = new Rectangle { Fill = Brushes.Gray }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
+                    //    RectanglesList.Add(RG);
+                    //}
+                    //else
+                    //{
 
-                        GridName.Children.Add(RG);
-                        Grid.SetColumn(RG, j);
-                        Grid.SetRow(RG, i);
+                    Rectangle RG = new Rectangle { Fill = Brushes.Gray }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
 
-                        Thickness myThickness = new Thickness();
-                        myThickness.Left = Margin;
-                        myThickness.Right = Margin;
-                        myThickness.Top = Margin;
-                        myThickness.Bottom = Margin;
-                        RG.Margin = myThickness;
+                    GridName.Children.Add(RG);
+                    Grid.SetColumn(RG, j);
+                    Grid.SetRow(RG, i);
 
-                        RectanglesList.Add(RG);
+                    Thickness myThickness = new Thickness();
+                    myThickness.Left = Margin;
+                    myThickness.Right = Margin;
+                    myThickness.Top = Margin;
+                    myThickness.Bottom = Margin;
+                    RG.Margin = myThickness;
 
-                    }
+                    RectanglesList.Add(RG);
+
+                    //}
                 }
             }
         }
-        int i = 0;
-        void ElementsColorChange(Grid GridName)
+
+        void GridListChange(Grid GridName)
         {
-            if (i != GridName.RowDefinitions.Count * GridName.ColumnDefinitions.Count)
+        }
+        int deffR = 0;
+        int deffC = 0;
+
+        int A = 1;
+
+        int[] MSV1 = new int[] { 0, 1, 2, 3 };
+        int[] MSV2 = new int[] { 0, 1, 2, 3 };
+
+
+        // СДЕЛАТЬ НОРМАЛЬНЫЙ ВЫБОР ЧЕРЕЗ FOR С УСЛОВИЕМ РАВЕНСТВА НУЖНОЙ НАМ ЯЧЕЙКИ (найти функция для возврата номера колумна и роу)
+
+        //void ElementsColorChange(Grid GridName)
+        //{
+        //    
+
+        //    if ((i - 1) != GridName.RowDefinitions.Count * GridName.ColumnDefinitions.Count)
+        //    {
+        //        //if (i > 0)
+        //        //    RectanglesList[i - 1].Fill = Brushes.Gray;
+
+        //        if (i == GridName.ColumnDefinitions.Count - 1) // i == 3 - он становится три 
+        //        {
+        //            i = GridName.ColumnDefinitions.Count + 3; // ----> i = 7 
+        //            A = -1;
+        //        }
+        //        if (i == GridName.ColumnDefinitions.Count)
+        //        {
+        //            i = GridName.ColumnDefinitions.Count + 4;
+        //            A = 1;
+        //        }
+        //        if (i == GridName.ColumnDefinitions.Count + 7)
+        //        {
+        //            i = GridName.ColumnDefinitions.Count + 11;
+        //            A = -1;
+        //        }
+        //        if (i != GridName.ColumnDefinitions.Count + 3 - 1 && i != GridName.ColumnDefinitions.Count + 4+1 && i != GridName.ColumnDefinitions.Count + 7)
+        //            i = i + A;
+        //        //if (i == GridName.ColumnDefinitions.Count + 3 && i == GridName.ColumnDefinitions.Count + 4 && i == GridName.ColumnDefinitions.Count + 7)
+        //        //    i = i + A;
+
+        //        //if (i != GridName.ColumnDefinitions.Count + 3 && i != GridName.ColumnDefinitions.Count + 4 && i != GridName.ColumnDefinitions.Count + 7)
+
+        //    }
+
+        //    RectanglesList[i].Fill = Brushes.LightPink;
+        //}
+
+        Rectangle newRG;
+        bool Flagishe = false;
+        void ElementsColorChange(Grid GridName, double Margin)
+        {
+            if (!Flagishe)
             {
-                // СДЕЛАТЬ НОРМАЛЬНЫЙ ВЫБОР ЧЕРЕЗ FOR С УСЛОВИЕМ РАВЕНСТВА НУЖНОЙ НАМ ЯЧЕЙКИ 
-                RectanglesList[i].Fill = Brushes.LightPink;
+                newRG = new Rectangle { Fill = Brushes.LightPink }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
+
+                GridName.Children.Add(newRG);
+
+                Thickness myThickness = new Thickness();
+                myThickness.Left = Margin;
+                myThickness.Right = Margin;
+                myThickness.Top = Margin;
+                myThickness.Bottom = Margin;
+                newRG.Margin = myThickness;
+
+                Flagishe = true;
             }
-            i++;
+            Grid.SetRow(newRG, deffR);
+            Grid.SetColumn(newRG, deffC);
+
+            if (deffC == 3)
+            {
+                deffR = deffR + A;
+                deffC = 0;
+            }
+
+            else
+                deffC = deffC + A;
+
+
         }
 
         void GetGridInfo(Grid GridName)
@@ -123,6 +199,7 @@ namespace Decoder_ZT18
             for (int i = 0; i < (GridName.RowDefinitions.Count); i++)
             {
                 GridRNames.Add(GridName.RowDefinitions[i].Name);
+
             }
             for (int i = 0; i < (GridName.ColumnDefinitions.Count); i++)
             {

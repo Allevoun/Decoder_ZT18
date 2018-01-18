@@ -18,13 +18,13 @@
             <ColumnDefinition Width="65"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" Grid.Row="1" Name="Grid_2">
-            <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions x:Uid="0">
                 <ColumnDefinition x:Name="Grid_2_Row_1"></ColumnDefinition>
                 <ColumnDefinition x:Name="Grid_2_Row_2"></ColumnDefinition>
                 <ColumnDefinition x:Name="Grid_2_Row_3"></ColumnDefinition>
                 <ColumnDefinition x:Name="Grid_2_Row_4"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
+            <Grid.RowDefinitions x:Uid="1"> 
                 <RowDefinition x:Name="Grid_2_Column_1"></RowDefinition>
                 <RowDefinition x:Name="Grid_2_Column_2"></RowDefinition>
                 <RowDefinition x:Name="Grid_2_Column_3"></RowDefinition>
@@ -33,7 +33,7 @@
             </Grid.RowDefinitions>
         </Grid>
 
-        <!--<Rectangle  Fill="LightPink" RadiusX="15" RadiusY="15" Margin="10"  ></Rectangle>-->
+        <!--<Rectangle    Fill="LightPink" RadiusX="15" RadiusY="15" Margin="10"  ></Rectangle>-->
         
     </Grid>
 </Window>
