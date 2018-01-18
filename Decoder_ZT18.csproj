@@ -55,21 +55,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Loader_win.xaml.cs">
+    <Compile Include="Windows\Loader_win.xaml.cs">
       <DependentUpon>Loader_win.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Loader_win_X2.xaml.cs">
+    <Compile Include="Windows\Loader_win_X2.xaml.cs">
       <DependentUpon>Loader_win_X2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Loader_win_X3.xaml.cs">
+      <DependentUpon>Loader_win_X3.xaml</DependentUpon>
     </Compile>
     <Compile Include="Quest_one_page.xaml.cs">
       <DependentUpon>Quest_one_page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Page Include="Loader_win.xaml">
+    <Page Include="Windows\Loader_win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Loader_win_X2.xaml">
+    <Page Include="Windows\Loader_win_X2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Loader_win_X3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -46,5 +46,11 @@ namespace Decoder_ZT18
             Loader_win_X2 LWx2 = new Loader_win_X2();
             LWx2.Show();
         }
+
+        private void BTN_q3_Click(object sender, RoutedEventArgs e)
+        {
+            Loader_win_X3 LWx3 = new Loader_win_X3();
+            LWx3.Show();
+        }
     }
 }

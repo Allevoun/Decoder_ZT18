@@ -57,9 +57,8 @@ namespace Decoder_ZT18
 
         void Timer_Tick(object sender, EventArgs e)
         {
-            ElementsColorChange(Grid_2, 5);
+            ElementsColorChange_X2(Grid_2, 5);
         }
-
 
         void CreateRectangle(Grid GridName, double Margin)
         {
@@ -113,6 +112,7 @@ namespace Decoder_ZT18
         void GridListChange(Grid GridName)
         {
         }
+
         int deffR = 0;
         int deffC = 0;
 
@@ -120,7 +120,6 @@ namespace Decoder_ZT18
 
         int[] MSV1 = new int[] { 0, 1, 2, 3 };
         int[] MSV2 = new int[] { 0, 1, 2, 3 };
-
 
         // СДЕЛАТЬ НОРМАЛЬНЫЙ ВЫБОР ЧЕРЕЗ FOR С УСЛОВИЕМ РАВЕНСТВА НУЖНОЙ НАМ ЯЧЕЙКИ (найти функция для возврата номера колумна и роу)
 
@@ -162,6 +161,7 @@ namespace Decoder_ZT18
 
         Rectangle newRG;
         bool Flagishe = false;
+
         void ElementsColorChange(Grid GridName, double Margin)
         {
             if (!Flagishe)
@@ -190,8 +190,51 @@ namespace Decoder_ZT18
 
             else
                 deffC = deffC + A;
+        }
 
+        void ElementsColorChange_X2(Grid GridName, double Margin)
+        {
+            if (!Flagishe)
+            {
+                newRG = new Rectangle { Fill = Brushes.LightPink }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
 
+                GridName.Children.Add(newRG);
+
+                Thickness myThickness = new Thickness();
+                myThickness.Left = Margin;
+                myThickness.Right = Margin;
+                myThickness.Top = Margin;
+                myThickness.Bottom = Margin;
+                newRG.Margin = myThickness;
+
+                Flagishe = true;
+            }
+            if (deffR < GridName.RowDefinitions.Count && deffC < GridName.RowDefinitions.Count && deffC >= 0 && deffR >= 0)
+            {
+                Grid.SetRow(newRG, deffR);
+                Grid.SetColumn(newRG, deffC);
+            }
+
+            if (deffC == 3 && deffR == 0)
+            {
+                deffR = deffR + A;
+                A = -1 * A;
+            }
+
+            else if (deffC == 0 && deffR == 1)
+            {
+                A = -1 * A;
+                deffR = deffR + A;
+            }
+
+            else if (deffC == 3 && deffR == 2)
+            {
+                deffR = deffR + A;
+                A = -1 * A;
+            }
+
+            else
+                deffC = deffC + A;
         }
 
         void GetGridInfo(Grid GridName)
