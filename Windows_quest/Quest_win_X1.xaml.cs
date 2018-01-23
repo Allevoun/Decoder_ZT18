@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Decoder_ZT18
+namespace Decoder_ZT18.Windows_quest
 {
     /// <summary>
-    /// Логика взаимодействия для Quest_one_page.xaml
+    /// Логика взаимодействия для Quest_win_X1.xaml
     /// </summary>
-    public partial class Quest_one_page : Page
+    public partial class Quest_win_X1 : Window
     {
-        public Quest_one_page()
+        public Quest_win_X1()
         {
             InitializeComponent();
-        }
-
-        private void BTN_decode_Click(object sender, RoutedEventArgs e)
-        {
-            TB_Code.Text = "LOCKED";
-        }
-
-        private void Decode(string CODE)
-        {
         }
     }
 }

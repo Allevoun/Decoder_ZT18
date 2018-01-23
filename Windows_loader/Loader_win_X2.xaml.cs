@@ -32,8 +32,6 @@ namespace Decoder_ZT18
             TimerOfClose(0.1);
         }
 
-        int N = 4;
-
         List<string> GridRNames = new List<string>();
         List<string> GridCNames = new List<string>();
 

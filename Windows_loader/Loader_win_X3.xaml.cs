@@ -60,9 +60,7 @@ namespace Decoder_ZT18
             {
                 EllipseList.Add(Grid_1.Children[i]);
 
-                //Grid.GetRow
-
-
+                //Grid.GetRow()
             }
         }
 
