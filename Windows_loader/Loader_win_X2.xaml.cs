@@ -29,7 +29,7 @@ namespace Decoder_ZT18
             timer.Tick += Timer_Tick;
             timer.Start();
 
-            TimerOfClose(0.1);
+            TimerOfClose(0.15); // идеально
         }
 
         List<string> GridRNames = new List<string>();
@@ -43,14 +43,14 @@ namespace Decoder_ZT18
 
         void TimerOfClose(double time)
         {
-            timer1.Interval = TimeSpan.FromMinutes(0.5);
+            timer1.Interval = TimeSpan.FromMinutes(time);
             timer1.Tick += Timer1_Tick;
             timer1.Start();
         }
 
         void Timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Stop();
+            this.Close();
         }
 
         void Timer_Tick(object sender, EventArgs e)

@@ -23,20 +23,20 @@
             <Button x:Name="BTN_q2" Click="BTN_q2_Click" Content="#2" FontSize="18" Margin="5 10 5 0"></Button>
             <Button x:Name="BTN_q3" Click="BTN_q3_Click" Content="#3" FontSize="18" Margin="5 10 5 0"></Button>-->
 
-        <TextBox Grid.Row="0" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
-        <TextBox Grid.Row="1" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
-        <TextBox Grid.Row="2" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
-        <TextBox Grid.Row="3" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
+        <TextBox x:Name="TB_1" Grid.Row="0" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
+        <TextBox x:Name="TB_2" Grid.Row="1" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
+        <TextBox x:Name="TB_3" Grid.Row="2" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
+        <TextBox x:Name="TB_4" Grid.Row="3" Margin="20,20,20,20" Height="50" Text="What I am?" TextAlignment="Center"></TextBox>
 
         <Button Grid.Row="0" Grid.Column="1" Margin="40 32.5" Height="25" Content="Check" x:Name="BTN_Check1" Click="BTN_Check1_Click"></Button>
         <Button Grid.Row="1" Grid.Column="1" Margin="40 32.5" Height="25" Content="Check" x:Name="BTN_Check2" Click="BTN_Check2_Click"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Margin="40 32.5" Height="25" Content="Check" x:Name="BTN_Check3"></Button>
-        <Button Grid.Row="3" Grid.Column="1" Margin="40 32.5" Height="25" Content="Check" x:Name="BTN_Check4"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Margin="40 32.5" Height="25" Content="Check" x:Name="BTN_Check3" Click="BTN_Check3_Click"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Margin="40 32.5" Height="25" Content="Check" x:Name="BTN_Check4" Click="BTN_Check4_Click"></Button>
 
-        <!--<Line Grid.Column="1" X1="50" X2="90" Y1="35" Y2="75" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
-        <Line Grid.Column="1" X1="88" X2="130" Y1="74" Y2="10" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
+        <!--<Line Grid.Column="1" X1="100" X2="150" Y1="20" Y2="80" Stroke="#FF1ECE27" StrokeThickness="5" Grid.RowSpan="2"></Line>
+        <Line Grid.Column="1" X1="100" X2="150" Y1="80" Y2="20" Stroke="#FF1ECE27" StrokeThickness="5" Grid.RowSpan="2"></Line>-->
 
-        <Line Grid.Column="1" Grid.Row="1" X1="50" X2="90" Y1="35" Y2="75" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
+        <!--<Line Grid.Column="1" Grid.Row="1" X1="50" X2="90" Y1="35" Y2="75" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
         <Line Grid.Column="1" Grid.Row="1" X1="88" X2="130" Y1="74" Y2="10" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
 
         <Line Grid.Column="1" Grid.Row="2" X1="50" X2="90" Y1="35" Y2="75" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
