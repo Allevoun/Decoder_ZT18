@@ -87,7 +87,7 @@ namespace Decoder_ZT18
                     //else
                     //{
 
-                    Rectangle RG = new Rectangle { Fill = Brushes.Gray }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
+                    Rectangle RG = new Rectangle { Fill = Brushes.LightSlateGray }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
 
                     GridName.Children.Add(RG);
                     Grid.SetColumn(RG, j);
@@ -194,7 +194,7 @@ namespace Decoder_ZT18
         {
             if (!Flagishe)
             {
-                newRG = new Rectangle { Fill = Brushes.LightPink }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
+                newRG = new Rectangle { Fill = Brushes.LightSeaGreen }; // РЕАЛИЗОВАТЬ ЧЕРЕЗ SETTINGS
 
                 GridName.Children.Add(newRG);
 

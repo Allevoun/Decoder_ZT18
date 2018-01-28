@@ -14,16 +14,20 @@ namespace Decoder_ZT18
         public static string Ans3 { get; set; }
         public static string Ans4 { get; set; }
 
-        string[] AnsS = new string[] { Ans1, Ans2, Ans3, Ans4 };
+        public static int DoneCheck { get; set; }
+
+        public static string[] AnsS = new string[] { Ans1, Ans2, Ans3, Ans4 };
 
         List<string[]> MSV =new List<string[]>();
 
         public Answers()
         {
-            Ans1 = "слово1";
-            Ans2 = "слово2";
-            Ans3 = "слово3";
-            Ans4 = "опыт";
+            Ans1 = "равенство";
+            Ans2 = "команда";
+            Ans3 = "опыт";
+            Ans4 = "воспоминания";
+
+            DoneCheck = 0;
         }
         
 

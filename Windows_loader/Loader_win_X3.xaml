@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Loader_win_X3" Height="300" Width="300">
     <Grid x:Name="Grid_1">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>

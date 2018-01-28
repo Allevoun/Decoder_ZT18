@@ -29,8 +29,8 @@ namespace Decoder_ZT18
             //DeadLine = DateTime.Now;
             //DeadLine.AddMinutes(2);
 
-            Settings.Deadline = DateTime.Now;
-            Settings.Deadline = Settings.Deadline.AddMinutes(2);
+            //Settings.Deadline = DateTime.Now;
+            //Settings.Deadline = Settings.Deadline.AddMinutes(2);
 
 
             timer.Interval = TimeSpan.FromMilliseconds(speed);
@@ -38,6 +38,8 @@ namespace Decoder_ZT18
             timer.Start();
 
             TimerOfClose(0.2);
+            TimerOfStop(0.3);
+
             //Line_1.X1 = this.Height / 3;
             //Line_1.Y1 = this.Width / 3;
             //Line_2.X1 = this.Height / 3;
@@ -57,7 +59,7 @@ namespace Decoder_ZT18
         int Etap = 0;
         double speed = 1;
         bool Flag = false;
-        // Settigs ???
+
         double[] A;
         double[] B;
         double[] C;
@@ -70,12 +72,20 @@ namespace Decoder_ZT18
 
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer timer1 = new DispatcherTimer();
+        DispatcherTimer timer2 = new DispatcherTimer();
 
         void TimerOfClose(double time)
         {
             timer1.Interval = TimeSpan.FromMinutes(time);
             timer1.Tick += Timer1_Tick;
             timer1.Start();
+        }
+
+        void TimerOfStop(double time)
+        {
+            timer2.Interval = TimeSpan.FromMinutes(time);
+            timer2.Tick += Timer2_Tick;
+            timer2.Start();
         }
 
         void Timer_Tick(object sender, EventArgs e)
@@ -104,14 +114,31 @@ namespace Decoder_ZT18
                 Etap = 0;
             }
         }
+
         void Timer1_Tick(object sender, EventArgs e)
         {
             timer.Stop();
             timer1.Stop();
-            this.Close();
+
+            Line_1.Visibility = Visibility.Hidden;
+            Line_2.Visibility = Visibility.Hidden;
+            Line_3.Visibility = Visibility.Hidden;
+            Line_4.Visibility = Visibility.Hidden;
+            TB_Congr.Visibility = Visibility.Visible;
+
+
         }
 
-        void NewLineCreate(double[] L3A, double[] L3B, double[] L4A, double[] L4B)
+        void Timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Stop();
+
+            Result_win RW = new Result_win();
+            RW.Show();
+            
+            this.Close();
+        }
+            void NewLineCreate(double[] L3A, double[] L3B, double[] L4A, double[] L4B)
         {
             if (Flag == true)
             {

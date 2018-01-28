@@ -32,6 +32,7 @@ namespace Decoder_ZT18
 
         List<Line> RightLineList = new List<Line>();
         List<Line> WrongLineList = new List<Line>();
+
         Answers AN = new Answers();
 
         private void BTN_Check1_Click(object sender, RoutedEventArgs e)
@@ -44,6 +45,8 @@ namespace Decoder_ZT18
                 {
                     RightLineList[i].Visibility = Visibility.Visible;
                 }
+                Answers.DoneCheck++;
+                CheckAllDone();
             }
             else
             {
@@ -52,6 +55,7 @@ namespace Decoder_ZT18
                     WrongLineList[i].Visibility = Visibility.Visible;
                 }
             }
+            
         }
         
         void RightLineDrow()
@@ -98,8 +102,7 @@ namespace Decoder_ZT18
             //int n = 0;
             //<Line Grid.Column="1" X1="50" X2="90" Y1="35" Y2="75" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
             //<Line Grid.Column="1" X1="88" X2="130" Y1="74" Y2="10" Stroke="#FF1ECE27" StrokeThickness="5" Margin="39.8,0,-39.6,92.6" Grid.RowSpan="2"></Line>
-            double x = 35;
-
+            
             for (int i = 0; i < 4; i++)
             {
                 Line NL = new Line() { Stroke = Brushes.Red };
@@ -142,6 +145,8 @@ namespace Decoder_ZT18
                 {
                     RightLineList[i].Visibility = Visibility.Visible;
                 }
+                Answers.DoneCheck++;
+                CheckAllDone();
             }
             else
             {
@@ -156,19 +161,36 @@ namespace Decoder_ZT18
         {
             BTN_Check3.Visibility = Visibility.Hidden;
 
-            if (TB_3.Text.ToUpper() == Answers.Ans3.ToUpper())
-            {
-                for (int i = 4; i < 6; i++)
+            
+                if (TB_3.Text.ToUpper() == Answers.Ans3.ToUpper())
                 {
-                    RightLineList[i].Visibility = Visibility.Visible;
-                }
+                    for (int i = 4; i < 6; i++)
+                    {
+                        RightLineList[i].Visibility = Visibility.Visible;
+                    }
+                Answers.DoneCheck++;
+                CheckAllDone();
             }
-            else
-            {
-                for (int i = 4; i < 6; i++)
+                else
                 {
-                    WrongLineList[i].Visibility = Visibility.Visible;
+                    for (int i = 4; i < 6; i++)
+                    {
+                        WrongLineList[i].Visibility = Visibility.Visible;
+                    }
                 }
+
+
+            
+        }
+
+        void CheckAllDone()
+        {
+            if (Answers.DoneCheck == 4)
+            {
+                Loader_win LW1 = new Loader_win();
+                LW1.Show();
+                this.Close();
+                
             }
         }
 
@@ -182,6 +204,8 @@ namespace Decoder_ZT18
                 {
                     RightLineList[i].Visibility = Visibility.Visible;
                 }
+                Answers.DoneCheck++;
+                CheckAllDone();
             }
             else
             {
